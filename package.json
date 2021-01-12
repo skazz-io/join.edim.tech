@@ -1,0 +1,36 @@
+{
+  "name": "join.edim.tech",
+  "version": "1.0.0",
+  "description": "Emerald Immersion join splash page",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install && node build",
+    "publish": "push-dir --dir=src --branch=gh-pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skazz-io/join.edim.tech.git"
+  },
+  "keywords": [
+    "website",
+    "spa",
+    "edim",
+    "splash",
+    "join",
+    "html5",
+    "node",
+    "javascript"
+  ],
+  "author": "SkAzZ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skazz-io/join.edim.tech/issues"
+  },
+  "homepage": "https://github.com/skazz-io/join.edim.tech#readme",
+  "dependencies": {
+    "particles.js": "^2.0.0"
+  },
+  "devDependencies": {
+    "push-dir": "^0.4.1"
+  }
+}

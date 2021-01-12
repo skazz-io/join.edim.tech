@@ -19,3 +19,5 @@ With VSCode it will open a debug instance of Chrome with working breakpoints.
 After commiting changes, to release to github pages run `npm run-script publish`.
 
 This will replace the contents of the `gh-pages` branch with the `src` folder.
+
+There is a short delay (around 2 minutes) for the changes to appear on the website.

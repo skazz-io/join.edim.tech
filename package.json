@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skazz-io/join.edim.tech.git"
+    "url": "git+https://github.com/Emerald-Immersion/join.edim.tech.git"
   },
   "keywords": [
     "website",
@@ -24,9 +24,9 @@
   "author": "SkAzZ",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/skazz-io/join.edim.tech/issues"
+    "url": "https://github.com/Emerald-Immersion/join.edim.tech/issues"
   },
-  "homepage": "https://github.com/skazz-io/join.edim.tech#readme",
+  "homepage": "https://github.com/Emerald-Immersion/join.edim.tech#readme",
   "dependencies": {
     "particles.js": "^2.0.0"
   },

@@ -46,8 +46,105 @@
                 <span class="button">Join Discord</span>
             </a>
         </section>
+        <section>
+            <form id="memberlist" name="memberlist" onsubmit="return memberlistSubmit()">
+                <label><p>Planetside Outfit Lookup Tool</p><input type="text" name="outfitalias" id="outfitalias" /></label>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <section>
+            <form id="userdetail" name="userdetail" onsubmit="return userdetailSubmit()">
+                <label><p>Planetside Player Lookup Tool</p><input type="text" name="username" id="username" /></label>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <footer id="footer" style="display: none;" >
+            <div id="footer_loading" style="display: none;" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div id="error_results" style="display: none;">
+                <h2>Not Found</h2>
+            </div>
+            <div id="userdetail_results" style="display: none;">
+                <h2>Planetside Player Lookup</h2>
+                <ul class="float">
+                    <li>Name: <span id="userdetail-name"></span></li>
+                    <li>Rank: <span id="userdetail-rank"></span></li>
+                    <li>Creation: <span id="userdetail-creation"></span></li>
+                    <li>Last Login: <span id="userdetail-lastlogon"></span></li>
+                    <li>Last Save: <span id="userdetail-lastsave"></span></li>
+                    <li>Total Items: <span id="userdetail-totalitems"></span></li>
+                </ul>
+                <h2>EDIM Loadout Check</h2>
+                <div id="userdetail_loadout"></div>
+            </div>
+            <div id="memberlist_results" style="display: none;">
+                <h2>Planetside Outfit Lookup</h2>
+                <ul class="float">
+                    <li>Name: <span id="outfit-name"></span></li>
+                    <li>Created: <span id="outfit-created"></span></li>
+                </ul>
+                <h2>Ranks</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th onclick="sort(this, 0)">Name</th>
+                            <th id="ranksort1" onclick="sort(this, 1)">Ordinal</th>
+                            <th onclick="sort(this, 2)">Members</th>
+                            <th onclick="sort(this, 3)">Active Now</th>
+                            <th onclick="sort(this, 4)">Active Today</th>
+                            <th onclick="sort(this, 5)">Active Week</th>
+                            <th onclick="sort(this, 6)">Active Month</th>
+                            <th onclick="sort(this, 7)">Total Battle Rank</th>
+                            <th onclick="sort(this, 8)">Total Prestige</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rank-results">
+        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th></th>
+                            <th><span id="outfit-members"></span></th>
+                            <th><span id="outfit-active-now"></span></th>
+                            <th><span id="outfit-active-today"></span</th>
+                            <th><span id="outfit-active-week"></span></th>
+                            <th><span id="outfit-active-month"></span></th>
+                            <th><span id="outfit-total-battlerank"></span></th>
+                            <th><span id="outfit-total-prestige"></span></th>
+                        </tr>
+                        <tr>
+                            <th>Average</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th><span id="outfit-average-battlerank"></span></th>
+                            <th><span id="outfit-average-prestige"></span></th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <h2>Members</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th onclick="sort(this, 0)">Name</th>
+                            <th onclick="sort(this, 1)">Battle Rank (Prestige)</th>
+                            <th id="membersort2" onclick="sort(this, 2)">Outfit Rank</th>
+                            <th id="membersort3" onclick="sort(this, 3)">Member Since</th>
+                            <th onclick="sort(this, 4)">Last Online</th>
+                        </tr>
+                    </thead>
+                    <tbody id="member-results">
+        
+                    </tbody>
+                </table>
+            </div>
+        </footer>
     </main>
     <script src="modules/particles.js" async defer></script>
+    <script src="config.js" defer></script>
     <script src="app.js" async defer></script>
 </body>
 </html>

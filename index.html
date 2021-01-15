@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>[EDIM] Emerald Immersion</title>
+    <link rel="stylesheet" media="screen" href="style.css" />
+</head>
+<body>
+    <div id="particles-js"></div>
+    <main>
+        <header>
+            <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="media/EDIM_512.png" width="256px" height="256px" alt="" />
+            <h1>[EDIM] Emerald Immersion</h1>
+        </header>
+        <section>
+            <a href="ts3server://ts.edim.tech">
+                <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="media/teamspeak.png" width="200px" height="60.172px" alt="" />
+                <br />
+                <p>Join us on Teamspeak for Organised Voice Comms.</p>
+                <br />
+                <span class="button">ts.edim.tech</span>
+            </a>
+        </section>
+        <section>
+            <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="media/planetside.png" width="200px" height="34px" alt="" />
+            <br />
+            <div id="planetside-result" class="loading">
+                <div>Active Leaders: <span id="ActiveLeaders"></span></div>
+                <div>Active Members Now: <span id="ActiveMembersNow"></span></div>
+                <div>Active Members Today: <span id="ActiveMembersToday"></span></div>
+                <div>Active Members this Week: <span id="ActiveMembersWeek"></span></div>
+                <div>Active Members this Month: <span id="ActiveMembersMonth"></span></div>
+                <div>Total Members: <span id="TotalMembers"></span></div>
+                <div>Total Prestige: <span id="TotalPrestige"></span></div>
+                <div>Total BattleRank: <span id="TotalBattleRank"></span></div>
+                <div>Average BattleRank: <span id="AvgBattleRank"></span></div>
+            </div>
+        </section>
+        <section>
+            <a target="_blank" href="https://discordapp.com/invite/HWz3jcM">
+                <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="media/discord.svg" width="278px" height="94.547px" alt="" />
+                <br />
+                <p>Join us on Discord for Chat.</p>
+                <br />
+                <span class="button">Join Discord</span>
+            </a>
+        </section>
+        <section class="split">
+            <section>
+                <form id="memberlist" name="memberlist" onsubmit="return memberlistSubmit()">
+                    <label><p>Planetside Outfit Lookup Tool</p><input type="text" name="outfitalias" id="outfitalias" pattern="[a-zA-Z0-9]+" minlength="1" maxlength="4" required /></label>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+            <section>
+                <form id="userdetail" name="userdetail" onsubmit="return userdetailSubmit()">
+                    <label><p>Planetside Player Lookup Tool</p><input type="text" name="username" id="username" pattern="[a-zA-Z0-9]+" minlength="3" maxlength="15" required /></label>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+        </section>
+        <footer id="footer" style="display: none;" >
+            <div id="footer_loading" style="display: none;" class="loading">
+                <span></span>
+            </div>
+            <div id="error_results" style="display: none;">
+                <h2>Not Found</h2>
+            </div>
+            <div id="userdetail_results" style="display: none;">
+                <h2>Planetside Player Lookup</h2>
+                <ul class="float">
+                    <li>Name: <span id="userdetail-name"></span></li>
+                    <li>Rank: <span id="userdetail-rank"></span></li>
+                    <li>Creation: <span id="userdetail-creation"></span></li>
+                    <li>Last Login: <span id="userdetail-lastlogon"></span></li>
+                    <li>Last Save: <span id="userdetail-lastsave"></span></li>
+                    <li>Total Items: <span id="userdetail-totalitems"></span></li>
+                </ul>
+                <h2>EDIM Loadout Check</h2>
+                <div id="userdetail_loadout"></div>
+            </div>
+            <div id="memberlist_results" style="display: none;">
+                <h2>Planetside Outfit Lookup</h2>
+                <ul class="float">
+                    <li>Name: <span id="outfit-name"></span></li>
+                    <li>Created: <span id="outfit-created"></span></li>
+                </ul>
+                <h2>Ranks</h2>
+                <table class="rank-table">
+                    <thead>
+                        <tr>
+                            <th id="ranksort1" onclick="sort(this, 0)">Name</th>
+                            <th onclick="sort(this, 1)">Members</th>
+                            <th onclick="sort(this, 2)">Active Now</th>
+                            <th onclick="sort(this, 3)">Active Today</th>
+                            <th onclick="sort(this, 4)">Active Week</th>
+                            <th onclick="sort(this, 5)">Active Month</th>
+                            <th onclick="sort(this, 6)">Total Battle Rank</th>
+                            <th onclick="sort(this, 7)">Total Prestige</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rank-results">
+        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th><span id="outfit-members"></span></th>
+                            <th><span id="outfit-active-now"></span></th>
+                            <th><span id="outfit-active-today"></span</th>
+                            <th><span id="outfit-active-week"></span></th>
+                            <th><span id="outfit-active-month"></span></th>
+                            <th><span id="outfit-total-battlerank"></span></th>
+                            <th><span id="outfit-total-prestige"></span></th>
+                        </tr>
+                        <tr>
+                            <th>Average</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th><span id="outfit-average-battlerank"></span></th>
+                            <th><span id="outfit-average-prestige"></span></th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <h2>Members</h2>
+                <table class="member-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sort(this, 0)">Name</th>
+                            <th onclick="sort(this, 1)">Battle Rank (Prestige)</th>
+                            <th id="membersort2" onclick="sort(this, 2)">Outfit Rank</th>
+                            <th id="membersort3" onclick="sort(this, 3)">Member Since</th>
+                            <th onclick="sort(this, 4)">Last Online</th>
+                        </tr>
+                    </thead>
+                    <tbody id="member-results">
+        
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+    </main>
+    <script src="modules/particles.js" async defer></script>
+    <script src="config.js" defer></script>
+    <script src="app.js" async defer></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+/* Layout */
+html,body { 
+	width:100%;
+    height:100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+main > * {
+    border: 1px solid #00A9A3;
+    background: #1c262f;
+    color: #90a3c0;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+main > header {
+    flex: 3 100%;
+    margin: 50px;
+}
+main > footer {
+    flex: 3 100%;
+    margin: 50px;
+}
+main > section {
+    min-width: 260px;
+    max-width: 320px;
+    flex: 1 1 25%;
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 840px) and (max-width: 1337px) {
+    section.split {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: row;
+        border: 0 none;
+        background: none;
+        margin: 0;
+        padding: 0;
+        max-width: 0;
+    }
+    section.split > section {
+        border: 1px solid #00A9A3;
+        background: #1c262f;
+        color: #90a3c0;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+        min-width: 333px;
+        max-width: 0;
+        flex: 1 1 25%;
+        box-sizing: border-box;
+    }
+}
+
+
+/* Theme */
+body {
+    background: #1c262f;
+    color: #90a3c0;
+}
+input, button {
+    background-color: #1c262f !important;
+    color: #e1edff;
+    border: 2px solid #323f4e;
+    padding: 10px;
+}
+input:hover, input:focus, a:hover .button, button:hover {
+    border-color: #00A9A3;
+}
+
+/* Fix webkit autocomplete render bug */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px #1c262f inset;
+    -webkit-text-fill-color: #e1edff;
+}
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #e1edff;
+}  
+
+.button {
+    background-color: #1c262f;
+    color: #e1edff;
+    border: 2px solid #323f4e;
+    padding: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.good {
+    color: green;
+}
+.bad { 
+    color: red;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+ul { 
+    margin:0; 
+    padding: 0; 
+
+}
+ul.float {
+    list-style: none outside none; 
+}
+ul li::before {
+    display: inline-block;
+    content: "\2022";
+    color: #00A9A3;
+    font-weight: bold;
+    width: 1em;
+    margin-left: -1em;
+}
+ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead {
+    border-bottom: 1px solid #00A9A3;
+}
+
+table tfoot {
+    border-top: 1px solid #00A9A3;
+}
+
+@media screen and (max-width: 600px) {
+    .rank-table th:nth-child(7), .rank-table td:nth-child(7) {
+        display: none;
+    }
+    .rank-table th:nth-child(8), .rank-table td:nth-child(8) {
+        display: none;
+    }
+    .rank-table th:nth-child(9), .rank-table td:nth-child(9) {
+        display: none;
+    }
+    .member-table td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 50px;
+    }
+}
+
+#footer_loading {
+    min-height: 50px;
+}
+
+#userdetail_loadout {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#userdetail_loadout div {
+    background-color: #252F39;
+    width: 350px;
+    margin: 15px;
+    padding: 15px;
+    flex-grow: 1;
+}
+
+/* Loading */
+.error div {
+    text-decoration: line-through;
+}
+.loading span:before {
+    animation: dots 3s linear infinite;
+    content: "   ";
+    min-width: 15px;
+    display: inline-block;
+}
+#footer_loading span:before {
+    font-size: xx-large;
+}
+@keyframes dots {
+    0%, 20% {
+        content: ".  ";
+    }
+    40% {
+        content: ".. ";
+    }
+    60% {
+        content: "...";
+    }
+    90%, 100% {
+        content: "   ";
+    }
+}
+
+/* Particles */
+#particles-js {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+#particles-js canvas {
+    display: block;
+}

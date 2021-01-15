@@ -316,7 +316,7 @@ function sumMemberRanks(ranks) {
             if (rank[i]) {
                 sums.total[i] += rank[i];
 
-                if (sums.average[i]) {
+                if (sums.average[i] != undefined) {
                     sums.average[i] += rank[i];
                 }
             }
@@ -453,7 +453,7 @@ function renderMemberList(data) {
     $('footer_loading').style.display = 'none';
     $('memberlist_results').style.display = '';
 
-    if ($('userdetail_results').style.display != 'none') {
+    if ($('userdetail_results').style.display != 'none' || screen.width <= 600) {
         $('memberlist_results').scrollIntoView({ 
             behavior: 'smooth' 
         });
@@ -547,6 +547,12 @@ function renderUserDetail(data) {
     
     $('footer_loading').style.display = 'none';
     $('userdetail_results').style.display = '';
+    
+    if (screen.width <= 600) {
+        $('userdetail_results').scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    }
 }
 
 function sort(e, cell)

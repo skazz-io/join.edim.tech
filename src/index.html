@@ -10,12 +10,12 @@
     <div id="particles-js"></div>
     <main>
         <header>
-            <img data-src="media/EDIM_512.png" width="256px" />
+            <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="media/EDIM_512.png" width="256px" height="256px" alt="" />
             <h1>[EDIM] Emerald Immersion</h1>
         </header>
         <section>
             <a href="ts3server://ts.edim.tech">
-                <img data-src="media/teamspeak.png" width="200px" />
+                <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="media/teamspeak.png" width="200px" height="60.172px" alt="" />
                 <br />
                 <p>Join us on Teamspeak for Organised Voice Comms.</p>
                 <br />
@@ -23,7 +23,7 @@
             </a>
         </section>
         <section>
-            <img data-src="media/planetside.png" width="200px" />
+            <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="media/planetside.png" width="200px" height="34px" alt="" />
             <br />
             <div id="planetside-result" class="loading">
                 <div>Active Leaders: <span id="ActiveLeaders"></span></div>
@@ -39,27 +39,31 @@
         </section>
         <section>
             <a target="_blank" href="https://discordapp.com/invite/HWz3jcM">
-                <img data-src="media/discord.svg" />
+                <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="media/discord.svg" width="278px" height="94.547px" alt="" />
                 <br />
                 <p>Join us on Discord for Chat.</p>
                 <br />
                 <span class="button">Join Discord</span>
             </a>
         </section>
-        <section>
-            <form id="memberlist" name="memberlist" onsubmit="return memberlistSubmit()">
-                <label><p>Planetside Outfit Lookup Tool</p><input type="text" name="outfitalias" id="outfitalias" /></label>
-                <button type="submit">Submit</button>
-            </form>
-        </section>
-        <section>
-            <form id="userdetail" name="userdetail" onsubmit="return userdetailSubmit()">
-                <label><p>Planetside Player Lookup Tool</p><input type="text" name="username" id="username" /></label>
-                <button type="submit">Submit</button>
-            </form>
+        <section class="split">
+            <section>
+                <form id="memberlist" name="memberlist" onsubmit="return memberlistSubmit()">
+                    <label><p>Planetside Outfit Lookup Tool</p><input type="text" name="outfitalias" id="outfitalias" pattern="[a-zA-Z0-9]+" minlength="1" maxlength="4" required /></label>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+            <section>
+                <form id="userdetail" name="userdetail" onsubmit="return userdetailSubmit()">
+                    <label><p>Planetside Player Lookup Tool</p><input type="text" name="username" id="username" pattern="[a-zA-Z0-9]+" minlength="3" maxlength="15" required /></label>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
         </section>
         <footer id="footer" style="display: none;" >
-            <div id="footer_loading" style="display: none;" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div id="footer_loading" style="display: none;" class="loading">
+                <span></span>
+            </div>
             <div id="error_results" style="display: none;">
                 <h2>Not Found</h2>
             </div>
@@ -83,18 +87,17 @@
                     <li>Created: <span id="outfit-created"></span></li>
                 </ul>
                 <h2>Ranks</h2>
-                <table>
+                <table class="rank-table">
                     <thead>
                         <tr>
-                            <th onclick="sort(this, 0)">Name</th>
-                            <th id="ranksort1" onclick="sort(this, 1)">Ordinal</th>
-                            <th onclick="sort(this, 2)">Members</th>
-                            <th onclick="sort(this, 3)">Active Now</th>
-                            <th onclick="sort(this, 4)">Active Today</th>
-                            <th onclick="sort(this, 5)">Active Week</th>
-                            <th onclick="sort(this, 6)">Active Month</th>
-                            <th onclick="sort(this, 7)">Total Battle Rank</th>
-                            <th onclick="sort(this, 8)">Total Prestige</th>
+                            <th id="ranksort1" onclick="sort(this, 0)">Name</th>
+                            <th onclick="sort(this, 1)">Members</th>
+                            <th onclick="sort(this, 2)">Active Now</th>
+                            <th onclick="sort(this, 3)">Active Today</th>
+                            <th onclick="sort(this, 4)">Active Week</th>
+                            <th onclick="sort(this, 5)">Active Month</th>
+                            <th onclick="sort(this, 6)">Total Battle Rank</th>
+                            <th onclick="sort(this, 7)">Total Prestige</th>
                         </tr>
                     </thead>
                     <tbody id="rank-results">
@@ -103,7 +106,6 @@
                     <tfoot>
                         <tr>
                             <th>Total</th>
-                            <th></th>
                             <th><span id="outfit-members"></span></th>
                             <th><span id="outfit-active-now"></span></th>
                             <th><span id="outfit-active-today"></span</th>
@@ -119,14 +121,13 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th></th>
                             <th><span id="outfit-average-battlerank"></span></th>
                             <th><span id="outfit-average-prestige"></span></th>
                         </tr>
                     </tfoot>
                 </table>
                 <h2>Members</h2>
-                <table>
+                <table class="member-table">
                     <thead>
                         <tr>
                             <th onclick="sort(this, 0)">Name</th>
